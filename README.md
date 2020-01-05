@@ -27,19 +27,21 @@ Gini index measures the degree or probability of a particular variable being wro
 
 We determine how much say a stump gets in the final classification depending on how well it predicted the classes. The total error for a stump is the sum of the weights associated with the incorrectly classified samples. We then use the total error to determine the amount of say this stump has in the final classification with the following formula-
 
-$$Amount of say=\frac{1}{2}\log\left(\frac{1-\ total error}{\ total error}\right)$$ 
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578252087/render.png)
 
 When a stump does a good job and the amount of error is close to 0 then the amount of say will be high. When a stump does a bad job and the total error is around 0.5 it will give very little amount of say. When a stump's error is close to 1 the amount of say will be a large negative value.
 
 To modify the weights of an incorrectly classified sample we use this formula-
 
-$$\text{new sample weight } = \text{sample weight }   e^{\text{amount of say}}$$ 
+
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578252395/render.png)
 
 The above formula will increase the sample weights which is a good thing as we want the incorrectly classified samples to be more important in the next stump.
 
 to modify the weights of correctly classified samples we do the below formula -
 
-$$\text{new sample weight } = \text{sample weight }   e^{\text{-amount of say}}$$ 
+
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578252612/render.png)
 
 this will decrease the importance of the sample going forward as we want to prioritise classifying the incorrectly classified samples.
 
@@ -53,12 +55,13 @@ Gradient descent algorithms starts by making a single leaf instead of a tree or 
 
 For regression the errors of the previous tree are the differences between observed and predicted values. This difference is called the pseudo residual. When building the next tree we use the predictor variables to predict the residuals and not the original target variable. As usually we have less leaves than residuals, when there is more than one residual per leaf we take the average. Now we go back to our original guess and run the sample down the tree and add the residual on to the original guess. Doing this directly would mean that we would have very high variance and therefore overfitting. To deal with this gradient boosting has a learning rate to scale the contribution from the new tree so it would be -
 
-$$\text{prediction } = \text{initial guess } + (\text{learning rate} * \text{residual})$$ 
+
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253024/render.png)
 
 Now this prediction will not be as good compared to just using the residual but its still better than the original guess. We can then use the residuals made from this tree to create another tree and follow the same process of finding what the residuals are. Once we do this we can scaled amounts from both trees to our initial guess.
 
 
-$$\text{prediction } = \text{initial guess } + (\text{learning rate} * \text{residual tree 1})+ (\text{learning rate} * \text{residual tree 2})$$ 
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253172/render.png)
 
 We can repeat the process of using the residuals to make a new tree but this time we use the residuals made from both trees. And so on until we get to the specified amount of trees.
 
@@ -67,12 +70,12 @@ When we get new measurements we can predict the outcome of new data by starting 
 
 For classification it’s slightly more complicated as the initial prediction is the log of the odds. To calculate the log of the odds in a binary case you do -
 
-
-$$\log\left(\frac{\text{num samples class 0}}{\text{num samples class 1}}\right)$$ 
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253336/render.png)
 
 to use the log of the odds for classification we turn it into a probability using the logistic function 
 
-$$ \frac{e^{\text{log odds}}}{1 + e^{\text{log odds}}} $$
+
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253433/render.png)
 
 We can measure how bad the initial prediction is by calculating the pseudo residuals - the difference between the observed and the predicted values. Using the observed values means that we use either 1 or 0 depending on if the sample is in the positive class or not. 
 
@@ -80,11 +83,11 @@ Residuals = (observed - predicted)
 
 Now we build a tree to predict the residual much like how we do for regression. However when we want to add the trees residuals onto the original prediction we have to use a transformation , the most common one being -
 
-$$ \frac{\sum\text{residuals}}{\sum\text {previous probability for residual * (1-previous previous probability for residual)}} $$
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253623/render.png)
 
 We can then add the residual from the tree onto the original prediction and then convert the new log odds prediction into a probability using 
 
-$$ \frac{e^{\text{log odds}}}{1 + e^{\text{log odds}}} $$
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578253794/render.png)
 
 We then calculate the residuals again using the new predicted probabilities for each of the samples and the observed values and repeat the process.
 
@@ -94,8 +97,8 @@ Light GBM is a gradient boosting framework that splits the tree leaf wise rather
 
 Light GBM also has an incredibly large amount of features to tweak highlighted in this [article](https://medium.com/@pushkarmandot/https-medium-com-pushkarmandot-what-is-lightgbm-how-to-implement-it-how-to-fine-tune-the-parameters-60347819b7fc), the aforementioned article has a good run down of what all the most important features do.
 
-## Modeling using LightGBM vs Ada Boost
+## Using Light GBM in this dataset
 
-Overall the performance of Light GBM blew ada Boost out of the water, with a AUC ROC of 0.92. Additionally Light GBM was extremely fast compared to ada boost 
+Overall the performance of Light GBM was very impressive with a mean ROC score of 0.920 and an out of fold ROC score of 0.919. This is combined with fast training speeds makes it seem like Light GBM is worth the hype.
 
-## Conclusion
+
