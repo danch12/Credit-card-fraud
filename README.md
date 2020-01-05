@@ -1,6 +1,17 @@
 # Credit-card-fraud
 
 
+## Packages used
+
+* Pandas
+* Scikit-learn
+* Matplotlib
+* Numpy
+* itertools
+* scipy
+* Light GBM
+
+
 ## Introduction
 
 I wanted to do a small project looking at credit card fraud. I thought it would be quite an interesting project and could also have real business impact. The dataset I used was from an old kaggle [competition](https://www.kaggle.com/c/ieee-fraud-detection/overview) that had finished a while ago. It had a load of samples and features so thought it would lead to some interesting results and also I wanted to look into learning how to use Light GBM which needs quite a lot of data. The bulk of this readme is going to be dedicated to the differences between ada boost and gradient descent algorithms as this project helped solidify this concept to me and therefore I thought it would be beneficial to lay it out in a project. 
@@ -99,6 +110,6 @@ Light GBM also has an incredibly large amount of features to tweak highlighted i
 
 ## Using Light GBM in this dataset
 
-Overall the performance of Light GBM was very impressive with a mean ROC score of 0.920 and an out of fold ROC score of 0.919. This is combined with fast training speeds makes it seem like Light GBM is worth the hype.
+Overall the performance of Light GBM was very impressive with a mean ROC score of 0.920 and an out of fold ROC score of 0.919. This is combined with fast training speeds makes it seem like Light GBM is the real deal.
 
 
