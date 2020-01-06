@@ -86,7 +86,7 @@ For classification it’s slightly more complicated as the initial prediction is
 to use the log of the odds for classification we turn it into a probability using the logistic function 
 
 
-![equation](http://www.sciweavers.org/upload/Tex2Img_1578253433/render.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578306290/render.png)
 
 We can measure how bad the initial prediction is by calculating the pseudo residuals - the difference between the observed and the predicted values. Using the observed values means that we use either 1 or 0 depending on if the sample is in the positive class or not. 
 
