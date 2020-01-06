@@ -38,7 +38,7 @@ Gini index measures the degree or probability of a particular variable being wro
 
 We determine how much say a stump gets in the final classification depending on how well it predicted the classes. The total error for a stump is the sum of the weights associated with the incorrectly classified samples. We then use the total error to determine the amount of say this stump has in the final classification with the following formula-
 
-![equation](http://www.sciweavers.org/upload/Tex2Img_1578306086/render.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578306199/render.png)
 
 When a stump does a good job and the amount of error is close to 0 then the amount of say will be high. When a stump does a bad job and the total error is around 0.5 it will give very little amount of say. When a stump's error is close to 1 the amount of say will be a large negative value.
 
