@@ -94,7 +94,7 @@ Residuals = (observed - predicted)
 
 Now we build a tree to predict the residual much like how we do for regression. However when we want to add the trees residuals onto the original prediction we have to use a transformation , the most common one being -
 
-![equation](http://www.sciweavers.org/upload/Tex2Img_1578253623/render.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578306350/render.png)
 
 We can then add the residual from the tree onto the original prediction and then convert the new log odds prediction into a probability using 
 
