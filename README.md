@@ -67,7 +67,7 @@ Gradient descent algorithms starts by making a single leaf instead of a tree or 
 For regression the errors of the previous tree are the differences between observed and predicted values. This difference is called the pseudo residual. When building the next tree we use the predictor variables to predict the residuals and not the original target variable. As usually we have less leaves than residuals, when there is more than one residual per leaf we take the average. Now we go back to our original guess and run the sample down the tree and add the residual on to the original guess. Doing this directly would mean that we would have very high variance and therefore overfitting. To deal with this gradient boosting has a learning rate to scale the contribution from the new tree so it would be -
 
 
-![equation](http://www.sciweavers.org/upload/Tex2Img_1578253024/render.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1578306086/render.png)
 
 Now this prediction will not be as good compared to just using the residual but its still better than the original guess. We can then use the residuals made from this tree to create another tree and follow the same process of finding what the residuals are. Once we do this we can scaled amounts from both trees to our initial guess.
 
